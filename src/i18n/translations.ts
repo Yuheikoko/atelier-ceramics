@@ -11,14 +11,14 @@ export const translations = {
     hero: {
       eyebrow: 'Aichi, Japan',
       title: 'Where Tradition\nMeets the World',
-      subtitle: 'Handcrafted ceramics from Seto and Tokoname — two of Japan\'s most storied pottery regions — brought to the global stage.',
+      subtitle: 'Discover handcrafted ceramics from Seto and Tokoname, two of Japan\'s most celebrated pottery regions, presented to collectors and institutions worldwide.',
       cta: 'Explore Collections',
     },
     mission: {
       eyebrow: 'Our Mission',
       title: 'Bridging Ancient Craft\nand Modern Sensibility',
       p1: 'We believe the quiet beauty of Japanese ceramics deserves a global audience. Each piece carries centuries of knowledge, shaped by hands that understand both tradition and transformation.',
-      p2: 'ATELIER is a bridge — connecting master artisans in Aichi with collectors, designers, and cultural institutions around the world.',
+      p2: 'ATELIER is a bridge — connecting artisans of Aichi with collectors, designers, and cultural institutions around the world.',
       stat1: { value: '1,000+', label: 'Years of craft heritage' },
       stat2: { value: '2', label: 'Legendary pottery regions' },
       stat3: { value: 'Global', label: 'Exhibition presence' },
@@ -41,7 +41,7 @@ export const translations = {
       seto: {
         label: 'Seto Ware',
         title: 'Japan\'s Most Beloved Pottery',
-        body: 'Seto, a city in Aichi Prefecture, has been a center of Japanese ceramics for over a thousand years. So central is Seto to the art form that the Japanese word for ceramics — "setomono" — literally means "things from Seto." Known for its delicate glazes and refined forms, Seto ware is a testament to centuries of unbroken craft tradition.',
+        body: 'Seto, a city in Aichi Prefecture, has been the center of Japanese ceramics for over a thousand years; its significance is so profound that the Japanese word for ceramics — "setomono" — literally means "things from Seto." Known for its delicate glazes and refined forms, Seto ware testifies to centuries of unbroken craft tradition.',
       },
       tokoname: {
         label: 'Tokoname Ware',
@@ -100,12 +100,12 @@ export const translations = {
     hero: {
       eyebrow: '愛知県、日本',
       title: '伝統が、\n世界へ。',
-      subtitle: '日本有数の陶芸の産地、瀬戸と常滑。その匠の技が生み出す器を、世界の舞台へと届けます。',
+      subtitle: '日本有数の陶芸の産地、瀬戸と常滑。その匠の技が生み出す器を世界の舞台へ届けます。',
       cta: 'コレクションを見る',
     },
     mission: {
       eyebrow: 'ミッション',
-      title: '受け継がれる技術と、\n時代を越えた美しさ',
+      title: '受け継がれる技術と、\n時代を超えた美しさ',
       p1: '日本の陶磁器が持つ静かな美しさには、世界に届けられるべき価値があります。一つひとつの器に、何世紀にもわたる知識と、伝統と革新を理解した手の技が宿っています。',
       p2: 'ATELIERは、愛知県の職人と世界のコレクター・デザイナー・文化機関をつなぐ架け橋です。',
       stat1: { value: '1,000年以上', label: '受け継がれる伝統' },

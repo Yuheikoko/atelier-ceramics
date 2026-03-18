@@ -12,44 +12,46 @@ const altLang = lang === 'en' ? 'ja' : 'en';
 const altUrl = `/${altLang}/`;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 mix-blend-multiply" id="site-header">
+<header class="fixed top-0 left-0 right-0 z-50" id="site-header">
   <div class="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
-    <a href={`/${lang}/`} class="font-serif text-xl tracking-[0.15em] text-stone-900 hover:text-accent transition-colors duration-300">
+    <a href={`/${lang}/`} class="font-serif text-xl tracking-[0.15em] text-stone-900 hover:text-accent transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2">
       ATELIER
     </a>
 
     <!-- Desktop nav -->
-    <nav class="hidden md:flex items-center gap-10">
-      <a href={`/${lang}/#collections`} class="text-xs font-medium tracking-[0.15em] uppercase text-stone-700 hover:text-accent transition-colors duration-300">
+    <nav class="hidden md:flex items-center gap-10" aria-label="Main navigation">
+      <a href={`/${lang}/#collections`} class="text-xs font-medium tracking-[0.15em] uppercase text-stone-700 hover:text-accent transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2">
         {tr.nav.collections}
       </a>
-      <a href={`/${lang}/#story`} class="text-xs font-medium tracking-[0.15em] uppercase text-stone-700 hover:text-accent transition-colors duration-300">
+      <a href={`/${lang}/#story`} class="text-xs font-medium tracking-[0.15em] uppercase text-stone-700 hover:text-accent transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2">
         {tr.nav.story}
       </a>
-      <a href={`/${lang}/#team`} class="text-xs font-medium tracking-[0.15em] uppercase text-stone-700 hover:text-accent transition-colors duration-300">
+      <a href={`/${lang}/#team`} class="text-xs font-medium tracking-[0.15em] uppercase text-stone-700 hover:text-accent transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2">
         {tr.nav.team}
       </a>
-      <a href={`/${lang}/#contact`} class="text-xs font-medium tracking-[0.15em] uppercase text-stone-700 hover:text-accent transition-colors duration-300">
+      <a href={`/${lang}/#contact`} class="text-xs font-medium tracking-[0.15em] uppercase text-stone-700 hover:text-accent transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2">
         {tr.nav.contact}
       </a>
     </nav>
 
     <div class="flex items-center gap-4">
-      <!-- Language switcher -->
+      <!-- 言語切り替え: 現在言語を表示し切替先を明確化 -->
       <a
         href={altUrl}
-        class="text-xs font-medium tracking-[0.12em] uppercase text-stone-500 hover:text-stone-900 transition-colors duration-300 border-b border-transparent hover:border-stone-900 pb-0.5"
-        aria-label={`Switch to ${altLang === 'en' ? 'English' : '日本語'}`}
+        class="text-xs font-medium tracking-[0.12em] uppercase text-stone-500 hover:text-stone-900 transition-colors duration-300 border-b-2 border-transparent hover:border-stone-900 pb-0.5 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+        aria-label={lang === 'en' ? 'Switch to Japanese' : '英語に切り替える'}
+        title={lang === 'en' ? 'Switch to 日本語' : 'Switch to English'}
       >
-        {altLang === 'en' ? 'EN' : 'JP'}
+        {lang === 'en' ? 'JP' : 'EN'}
       </a>
 
       <!-- Mobile menu button -->
       <button
         id="menu-btn"
-        class="md:hidden flex flex-col gap-1.5 p-1"
-        aria-label="Toggle menu"
+        class="md:hidden flex flex-col gap-1.5 p-1 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+        aria-label="Toggle navigation menu"
         aria-expanded="false"
+        aria-controls="mobile-menu"
       >
         <span class="block w-6 h-px bg-stone-900 transition-all duration-300" id="line1"></span>
         <span class="block w-6 h-px bg-stone-900 transition-all duration-300" id="line2"></span>
@@ -61,13 +63,16 @@ const altUrl = `/${altLang}/`;
   <!-- Mobile menu -->
   <div
     id="mobile-menu"
+    role="navigation"
+    aria-label="Mobile navigation"
+    aria-hidden="true"
     class="md:hidden fixed inset-0 bg-stone-50 z-40 flex flex-col items-center justify-center gap-10 opacity-0 pointer-events-none transition-opacity duration-300"
   >
-    <a href={`/${lang}/#collections`} class="font-serif text-3xl text-stone-900 mobile-link">{tr.nav.collections}</a>
-    <a href={`/${lang}/#story`} class="font-serif text-3xl text-stone-900 mobile-link">{tr.nav.story}</a>
-    <a href={`/${lang}/#team`} class="font-serif text-3xl text-stone-900 mobile-link">{tr.nav.team}</a>
-    <a href={`/${lang}/#contact`} class="font-serif text-3xl text-stone-900 mobile-link">{tr.nav.contact}</a>
-    <a href={altUrl} class="text-sm font-medium tracking-widest uppercase text-stone-500 mt-4">
+    <a href={`/${lang}/#collections`} class="font-serif text-3xl leading-tight text-stone-900 mobile-link hover:text-accent transition-colors duration-300">{tr.nav.collections}</a>
+    <a href={`/${lang}/#story`} class="font-serif text-3xl leading-tight text-stone-900 mobile-link hover:text-accent transition-colors duration-300">{tr.nav.story}</a>
+    <a href={`/${lang}/#team`} class="font-serif text-3xl leading-tight text-stone-900 mobile-link hover:text-accent transition-colors duration-300">{tr.nav.team}</a>
+    <a href={`/${lang}/#contact`} class="font-serif text-3xl leading-tight text-stone-900 mobile-link hover:text-accent transition-colors duration-300">{tr.nav.contact}</a>
+    <a href={altUrl} class="text-sm font-medium tracking-widest uppercase text-stone-500 hover:text-stone-900 transition-colors duration-300 mt-4">
       {altLang === 'en' ? 'English' : '日本語'}
     </a>
   </div>
@@ -84,35 +89,45 @@ const altUrl = `/${altLang}/`;
   btn?.addEventListener('click', () => {
     open = !open;
     btn.setAttribute('aria-expanded', String(open));
+    menu?.setAttribute('aria-hidden', String(!open));
     if (open) {
       menu?.classList.remove('opacity-0', 'pointer-events-none');
       line1?.classList.add('rotate-45', 'translate-y-2');
       line3?.classList.add('opacity-0');
       line2?.classList.add('-rotate-45');
+      // フォーカスをメニュー内の最初のリンクへ移動
+      (menu?.querySelector('a') as HTMLElement)?.focus();
     } else {
       menu?.classList.add('opacity-0', 'pointer-events-none');
       line1?.classList.remove('rotate-45', 'translate-y-2');
       line3?.classList.remove('opacity-0');
       line2?.classList.remove('-rotate-45');
+      // フォーカスをメニューボタンへ戻す
+      btn?.focus();
     }
   });
 
   document.querySelectorAll('.mobile-link').forEach((link) => {
     link.addEventListener('click', () => {
       open = false;
+      btn?.setAttribute('aria-expanded', 'false');
+      menu?.setAttribute('aria-hidden', 'true');
       menu?.classList.add('opacity-0', 'pointer-events-none');
+      line1?.classList.remove('rotate-45', 'translate-y-2');
+      line3?.classList.remove('opacity-0');
+      line2?.classList.remove('-rotate-45');
     });
   });
 
-  // Header background on scroll
+  // Header背景: Heroセクション終了付近で切り替え（動的しきい値）
   const header = document.getElementById('site-header');
+  const heroThreshold = window.innerHeight * 0.7;
+
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 60) {
+    if (window.scrollY > heroThreshold) {
       header?.classList.add('bg-stone-50/95', 'backdrop-blur-sm', 'border-b', 'border-stone-200');
-      header?.classList.remove('mix-blend-multiply');
     } else {
       header?.classList.remove('bg-stone-50/95', 'backdrop-blur-sm', 'border-b', 'border-stone-200');
-      header?.classList.add('mix-blend-multiply');
     }
   }, { passive: true });
 </script>

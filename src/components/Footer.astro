@@ -10,18 +10,56 @@ const { lang } = Astro.props;
 const tr = t(lang);
 ---
 
-<footer class="bg-stone-950 text-stone-400 py-12">
+<footer class="bg-stone-950 text-stone-400 py-16">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
-    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-b border-stone-800 pb-8 mb-8">
-      <a href={`/${lang}/`} class="font-serif text-2xl tracking-[0.15em] text-stone-50">
-        ATELIER
-      </a>
-      <p class="text-xs tracking-[0.15em] uppercase text-stone-500">{tr.footer.tagline}</p>
+    <!-- Top: logo + nav + connect -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-stone-800 pb-10 mb-8">
+      <!-- Brand -->
+      <div>
+        <a href={`/${lang}/`} class="font-serif text-2xl tracking-[0.15em] text-stone-50 hover:text-accent transition-colors duration-300">
+          ATELIER
+        </a>
+        <p class="text-xs tracking-[0.15em] uppercase text-stone-500 mt-3">{tr.footer.tagline}</p>
+      </div>
+
+      <!-- Navigation -->
+      <nav aria-label="Footer navigation">
+        <p class="text-xs font-medium tracking-[0.15em] uppercase text-stone-400 mb-4">Navigation</p>
+        <ul class="space-y-2">
+          <li><a href={`/${lang}/#collections`} class="text-sm text-stone-500 hover:text-stone-50 transition-colors duration-300">{tr.nav.collections}</a></li>
+          <li><a href={`/${lang}/#story`} class="text-sm text-stone-500 hover:text-stone-50 transition-colors duration-300">{tr.nav.story}</a></li>
+          <li><a href={`/${lang}/#team`} class="text-sm text-stone-500 hover:text-stone-50 transition-colors duration-300">{tr.nav.team}</a></li>
+          <li><a href={`/${lang}/#contact`} class="text-sm text-stone-500 hover:text-stone-50 transition-colors duration-300">{tr.nav.contact}</a></li>
+        </ul>
+      </nav>
+
+      <!-- Connect -->
+      <div>
+        <p class="text-xs font-medium tracking-[0.15em] uppercase text-stone-400 mb-4">Connect</p>
+        <ul class="space-y-2">
+          <li>
+            <a id="footer-email" href="#" class="text-sm text-stone-500 hover:text-stone-50 transition-colors duration-300">
+              Email
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
 
+    <!-- Bottom: license + copy -->
     <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs">
       <p class="text-stone-600">{tr.footer.license}</p>
       <p class="text-stone-600">{tr.footer.copy}</p>
     </div>
   </div>
 </footer>
+
+<script>
+  // メールアドレスを動的に描画（ボット収集対策）
+  const el = document.getElementById('footer-email');
+  if (el) {
+    const e = atob('dGFpc2VpOTI1bWFub0BnbWFpbC5jb20=');
+    el.href = `mailto:${e}`;
+    el.textContent = e;
+  }
+</script>

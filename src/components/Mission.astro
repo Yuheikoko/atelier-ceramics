@@ -31,8 +31,10 @@ const tr = t(lang);
         <div class="grid grid-cols-1 gap-0 border-t border-stone-200">
           {[tr.mission.stat1, tr.mission.stat2, tr.mission.stat3].map((stat, i) => (
             <div class={`py-8 border-b border-stone-200 fade-up delay-${i + 2}`}>
-              <p class="font-serif text-4xl md:text-5xl text-stone-900 mb-2">{stat.value}</p>
-              <p class="text-xs font-medium tracking-[0.15em] uppercase text-stone-500">{stat.label}</p>
+              <!-- 統計値: accent色で視覚的強調、サイズを見出しと差別化 -->
+              <p class="font-serif text-3xl md:text-4xl text-accent mb-2">{stat.value}</p>
+              <!-- ラベル: stone-700 でコントラスト確保（WCAG AA） -->
+              <p class="text-xs font-medium tracking-[0.15em] uppercase text-stone-700">{stat.label}</p>
             </div>
           ))}
         </div>

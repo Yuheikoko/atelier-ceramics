@@ -10,7 +10,7 @@ const { lang } = Astro.props;
 const tr = t(lang);
 ---
 
-<section id="team" class="py-28 md:py-40 bg-stone-900 text-stone-50">
+<section id="team" class="py-28 md:py-40 bg-gradient-to-b from-stone-800 to-stone-900 text-stone-50">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
     <div class="mb-16">
       <p class="eyebrow text-accent mb-5 fade-up">{tr.team.eyebrow}</p>
@@ -20,11 +20,11 @@ const tr = t(lang);
     <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-stone-700">
       {tr.team.members.map((member, i) => (
         <div class={`py-12 md:py-16 ${i === 0 ? 'md:border-r border-stone-700' : ''} border-b border-stone-700 px-0 md:px-12 first:pl-0 fade-up delay-${i + 2}`}>
-          <p class="text-xs font-medium tracking-[0.2em] uppercase text-stone-500 mb-4">{member.role}</p>
+          <p class="text-xs font-medium tracking-[0.2em] uppercase text-stone-400 mb-4">{member.role}</p>
           <p class="font-serif text-3xl text-stone-50 mb-1">{member.name}</p>
           <p class="text-sm text-stone-400 mb-6 tracking-wider">{member.nameJa}</p>
           <div class="w-8 h-px bg-accent mb-6"></div>
-          <p class="text-stone-400 leading-relaxed">{member.bio}</p>
+          <p class="text-stone-300 leading-relaxed">{member.bio}</p>
         </div>
       ))}
     </div>

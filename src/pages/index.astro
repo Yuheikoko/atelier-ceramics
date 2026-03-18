@@ -1,3 +1,18 @@
 ---
-return Astro.redirect('/en/');
+// 静的サイトのためクライアントサイドで言語自動判定
 ---
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ATELIER</title>
+    <noscript><meta http-equiv="refresh" content="0;url=/en/" /></noscript>
+  </head>
+  <body>
+    <script>
+      const lang = navigator.language || navigator.languages?.[0] || 'en';
+      const dest = lang.toLowerCase().startsWith('ja') ? '/ja/' : '/en/';
+      window.location.replace(dest);
+    </script>
+  </body>
+</html>

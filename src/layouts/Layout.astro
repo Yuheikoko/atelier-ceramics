@@ -6,12 +6,41 @@ interface Props {
   title: string;
   description?: string;
   lang: Lang;
+  ogImage?: string;
 }
 
-const { title, description = 'ATELIER — Japanese Traditional Ceramics from Seto and Tokoname, Aichi.', lang } = Astro.props;
+const {
+  title,
+  description = 'ATELIER — Japanese Traditional Ceramics from Seto and Tokoname, Aichi.',
+  lang,
+  ogImage = '/images/main001.jpg',
+} = Astro.props;
+
 const canonical = Astro.url.href;
 const altLang = lang === 'en' ? 'ja' : 'en';
 const altUrl = canonical.replace(`/${lang}/`, `/${altLang}/`);
+const siteUrl = 'https://atelier.jp';
+const ogImageUrl = `${siteUrl}${ogImage}`;
+const ogLocale = lang === 'ja' ? 'ja_JP' : 'en_US';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'ATELIER',
+  url: siteUrl,
+  description: 'Japanese traditional ceramics from Seto and Tokoname, Aichi Prefecture.',
+  image: ogImageUrl,
+  email: 'taisei925mano@gmail.com',
+  location: {
+    '@type': 'Place',
+    name: 'Aichi, Japan',
+    address: {
+      '@type': 'PostalAddress',
+      addressRegion: 'Aichi',
+      addressCountry: 'JP',
+    },
+  },
+};
 ---
 
 <!doctype html>
@@ -24,6 +53,20 @@ const altUrl = canonical.replace(`/${lang}/`, `/${altLang}/`);
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang={altLang} href={altUrl} />
     <link rel="alternate" hreflang={lang} href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}/en/`} />
+
+    <!-- OGP / SNS シェア -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:site_name" content="ATELIER" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,17 +78,20 @@ const altUrl = canonical.replace(`/${lang}/`, `/${altLang}/`);
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- 構造化データ -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body>
     <slot />
 
     <script>
-      // Intersection Observer for fade-up animations
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
             }
           });
         },
