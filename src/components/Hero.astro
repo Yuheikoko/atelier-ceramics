@@ -13,12 +13,15 @@ const tr = t(lang);
 <section class="relative min-h-screen flex items-end pb-20 overflow-hidden">
   <!-- Background image -->
   <div class="absolute inset-0">
-    <img
-      src="/images/main001.jpg"
-      alt="Handcrafted Japanese ceramic vessels displayed in an artisan workshop in Aichi Prefecture"
-      class="w-full h-full object-cover"
-      fetchpriority="high"
-    />
+    <picture>
+      <source srcset="/images/main001.webp" type="image/webp" />
+      <img
+        src="/images/main001.jpg"
+        alt="Handcrafted Japanese ceramic vessels displayed in an artisan workshop in Aichi Prefecture"
+        class="w-full h-full object-cover"
+        fetchpriority="high"
+      />
+    </picture>
     <div class="absolute inset-0 bg-gradient-to-t from-stone-950/60 via-stone-950/20 to-transparent"></div>
   </div>
 

@@ -1,0 +1,121 @@
+---
+// 404 ページ: URL から言語を判定
+const url = Astro.url.pathname;
+const lang = url.startsWith('/ja') ? 'ja' : 'en';
+
+const copy = {
+  en: {
+    title: '404 — Page Not Found | ATELIER',
+    code: '404',
+    heading: 'Page Not Found',
+    body: 'The page you\'re looking for doesn\'t exist or has been moved.',
+    cta: 'Return Home',
+  },
+  ja: {
+    title: '404 — ページが見つかりません | ATELIER',
+    code: '404',
+    heading: 'ページが見つかりません',
+    body: 'お探しのページは存在しないか、移動した可能性があります。',
+    cta: 'トップへ戻る',
+  },
+}[lang];
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{copy.title}</title>
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #fafaf8;
+        color: #1c1917;
+        font-family: 'Inter', system-ui, sans-serif;
+        padding: 2rem;
+        text-align: center;
+      }
+      .code {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(6rem, 20vw, 12rem);
+        font-weight: 300;
+        line-height: 1;
+        color: #e8e6df;
+        letter-spacing: -0.02em;
+        margin-bottom: 2rem;
+      }
+      .heading {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        font-weight: 400;
+        color: #1c1917;
+        margin-bottom: 1rem;
+      }
+      .body {
+        font-size: 0.95rem;
+        color: #8c8778;
+        line-height: 1.6;
+        max-width: 36ch;
+        margin-bottom: 3rem;
+      }
+      .divider {
+        width: 2rem;
+        height: 1px;
+        background-color: #92724a;
+        margin: 0 auto 2.5rem;
+      }
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.875rem 2rem;
+        background-color: #1c1917;
+        color: #fafaf8;
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: background-color 0.25s ease;
+      }
+      .cta:hover { background-color: #92724a; }
+      .cta:focus-visible { outline: 2px solid #92724a; outline-offset: 3px; }
+      .logo {
+        position: fixed;
+        top: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 1.1rem;
+        letter-spacing: 0.15em;
+        color: #1c1917;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <a href={`/${lang}/`} class="logo">ATELIER</a>
+    <p class="code">{copy.code}</p>
+    <h1 class="heading">{copy.heading}</h1>
+    <div class="divider"></div>
+    <p class="body">{copy.body}</p>
+    <a href={`/${lang}/`} class="cta">
+      {copy.cta}
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </body>
+</html>
