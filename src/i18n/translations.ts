@@ -54,16 +54,16 @@ export const translations = {
       title: 'The People Behind ATELIER',
       members: [
         {
+          name: 'Taisei Mano',
+          nameJa: '眞野 泰成',
+          role: 'Founder & Director',
+          bio: 'Dedicated to showcasing the depth of Japanese craftsmanship to the world. Drives relationships with artisans, curates the ATELIER collection, and leads all international outreach.',
+        },
+        {
           name: 'Yuhei Koike',
           nameJa: '小池 悠平',
           role: 'Co-Founder',
-          bio: 'Passionate about connecting Japan\'s rich cultural heritage with the global community. Leads creative direction and international partnerships.',
-        },
-        {
-          name: 'Taisei Mano',
-          nameJa: '眞野 泰成',
-          role: 'Co-Founder',
-          bio: 'Dedicated to showcasing the depth of Japanese craftsmanship. Drives relationships with artisans and curates the ATELIER collection.',
+          bio: 'Passionate about connecting Japan\'s rich cultural heritage with the global community. Supports creative direction and partnership development.',
         },
       ],
     },
@@ -143,16 +143,16 @@ export const translations = {
       title: 'ATELIERを支える人々',
       members: [
         {
+          name: 'Taisei Mano',
+          nameJa: '眞野 泰成',
+          role: 'ファウンダー & ディレクター',
+          bio: '日本の職人技の奥深さを世界に届けることに尽力する。職人との関係構築とコレクションのキュレーション、海外への発信全般を担う。',
+        },
+        {
           name: 'Yuhei Koike',
           nameJa: '小池 悠平',
           role: '共同創業者',
-          bio: '日本の豊かな文化遺産を世界へと繋ぐことに情熱を注ぐ。クリエイティブディレクションと国際パートナーシップをリードする。',
-        },
-        {
-          name: 'Taisei Mano',
-          nameJa: '眞野 泰成',
-          role: '共同創業者',
-          bio: '日本の職人技の奥深さを世界に届けることに尽力する。職人との関係構築と、ATELIERのコレクションキュレーションを担う。',
+          bio: '日本の豊かな文化遺産を世界へと繋ぐことに情熱を注ぐ。クリエイティブディレクションとパートナーシップ構築をサポートする。',
         },
       ],
     },
