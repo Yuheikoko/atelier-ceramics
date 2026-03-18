@@ -1,0 +1,118 @@
+---
+import type { Lang } from '../i18n/translations';
+import { t } from '../i18n/translations';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const tr = t(lang);
+const altLang = lang === 'en' ? 'ja' : 'en';
+const altUrl = `/${altLang}/`;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 mix-blend-multiply" id="site-header">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
+    <a href={`/${lang}/`} class="font-serif text-xl tracking-[0.15em] text-stone-900 hover:text-accent transition-colors duration-300">
+      ATELIER
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-10">
+      <a href={`/${lang}/#collections`} class="text-xs font-medium tracking-[0.15em] uppercase text-stone-700 hover:text-accent transition-colors duration-300">
+        {tr.nav.collections}
+      </a>
+      <a href={`/${lang}/#story`} class="text-xs font-medium tracking-[0.15em] uppercase text-stone-700 hover:text-accent transition-colors duration-300">
+        {tr.nav.story}
+      </a>
+      <a href={`/${lang}/#team`} class="text-xs font-medium tracking-[0.15em] uppercase text-stone-700 hover:text-accent transition-colors duration-300">
+        {tr.nav.team}
+      </a>
+      <a href={`/${lang}/#contact`} class="text-xs font-medium tracking-[0.15em] uppercase text-stone-700 hover:text-accent transition-colors duration-300">
+        {tr.nav.contact}
+      </a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <!-- Language switcher -->
+      <a
+        href={altUrl}
+        class="text-xs font-medium tracking-[0.12em] uppercase text-stone-500 hover:text-stone-900 transition-colors duration-300 border-b border-transparent hover:border-stone-900 pb-0.5"
+        aria-label={`Switch to ${altLang === 'en' ? 'English' : '日本語'}`}
+      >
+        {altLang === 'en' ? 'EN' : 'JP'}
+      </a>
+
+      <!-- Mobile menu button -->
+      <button
+        id="menu-btn"
+        class="md:hidden flex flex-col gap-1.5 p-1"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <span class="block w-6 h-px bg-stone-900 transition-all duration-300" id="line1"></span>
+        <span class="block w-6 h-px bg-stone-900 transition-all duration-300" id="line2"></span>
+        <span class="block w-4 h-px bg-stone-900 transition-all duration-300" id="line3"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden fixed inset-0 bg-stone-50 z-40 flex flex-col items-center justify-center gap-10 opacity-0 pointer-events-none transition-opacity duration-300"
+  >
+    <a href={`/${lang}/#collections`} class="font-serif text-3xl text-stone-900 mobile-link">{tr.nav.collections}</a>
+    <a href={`/${lang}/#story`} class="font-serif text-3xl text-stone-900 mobile-link">{tr.nav.story}</a>
+    <a href={`/${lang}/#team`} class="font-serif text-3xl text-stone-900 mobile-link">{tr.nav.team}</a>
+    <a href={`/${lang}/#contact`} class="font-serif text-3xl text-stone-900 mobile-link">{tr.nav.contact}</a>
+    <a href={altUrl} class="text-sm font-medium tracking-widest uppercase text-stone-500 mt-4">
+      {altLang === 'en' ? 'English' : '日本語'}
+    </a>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const line1 = document.getElementById('line1');
+  const line2 = document.getElementById('line2');
+  const line3 = document.getElementById('line3');
+  let open = false;
+
+  btn?.addEventListener('click', () => {
+    open = !open;
+    btn.setAttribute('aria-expanded', String(open));
+    if (open) {
+      menu?.classList.remove('opacity-0', 'pointer-events-none');
+      line1?.classList.add('rotate-45', 'translate-y-2');
+      line3?.classList.add('opacity-0');
+      line2?.classList.add('-rotate-45');
+    } else {
+      menu?.classList.add('opacity-0', 'pointer-events-none');
+      line1?.classList.remove('rotate-45', 'translate-y-2');
+      line3?.classList.remove('opacity-0');
+      line2?.classList.remove('-rotate-45');
+    }
+  });
+
+  document.querySelectorAll('.mobile-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      open = false;
+      menu?.classList.add('opacity-0', 'pointer-events-none');
+    });
+  });
+
+  // Header background on scroll
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      header?.classList.add('bg-stone-50/95', 'backdrop-blur-sm', 'border-b', 'border-stone-200');
+      header?.classList.remove('mix-blend-multiply');
+    } else {
+      header?.classList.remove('bg-stone-50/95', 'backdrop-blur-sm', 'border-b', 'border-stone-200');
+      header?.classList.add('mix-blend-multiply');
+    }
+  }, { passive: true });
+</script>
